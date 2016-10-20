@@ -13,3 +13,8 @@ end
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, content|
   fill_in element, with: content
 end
+
+Given(/^I am on the page for "([^"]*)"$/) do |name|
+  quiz = Quiz.find_by(name: name)
+  visit quiz_path(quiz)
+end
