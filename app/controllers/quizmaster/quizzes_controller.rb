@@ -22,6 +22,15 @@ class Quizmaster::QuizzesController < ApplicationController
     @quiz = Quiz.new
   end
 
+  def edit
+    @quiz = Quiz.find(params[:id])
+  end
+
+  def update
+    binding.pry
+    redirect_to quizmaster_dashboard_path
+  end
+
   def create
     # I want to refactor this one, but the 'and return' seems to need to be here... Need help (or at least an internet connection)
     @quiz = current_user.quizzes.create(quiz_params)
@@ -39,14 +48,6 @@ class Quizmaster::QuizzesController < ApplicationController
       flash[:alert] = @quiz.errors.full_messages.first
       render :new
     end
-  end
-
-  def edit
-    @quiz = Quiz.find(params[:id])
-  end
-
-  def update
-    redirect_to quizmaster_dashboard_path
   end
 
   def start_quiz
