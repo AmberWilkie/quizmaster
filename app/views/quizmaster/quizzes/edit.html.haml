@@ -1,13 +1,21 @@
 .box
-  %h1 Create a new quiz
+  %h1 Edit #{@quiz.name}
 
   = form_tag action: 'update', remote: true do |f|
     .form-group
       = label_tag :name, 'Quiz Name'
-      = text_field_tag :name, nil, class: 'form-control code'
+      = text_field_tag :name, @quiz.name, class: 'form-control code'
       %hr/
 
     .fields
+      - @quiz.questions.each do |question|
+        .new_questions_form{id: "question_id_#{question.id}"}
+          = label_tag 'questions[][body]', 'Question'
+          = text_field_tag 'questions[][body]', question.body, class: 'form-control'
+          = label_tag 'questions[][answer]', 'Answer'
+          = text_field_tag 'questions[][answer]', question.answer, class: 'form-control'
+          = hidden_field_tag 'questions[][id]', question.id
+
       #questions_choices
         = render partial: 'form'
       .right.top_space
@@ -15,15 +23,14 @@
       %br
       = submit_tag 'Create', id: 'create', class: 'btn btn-primary btn-lg btn-block'
 
-      #new_questions_form{style: 'display: none;'}
-        = render partial: 'form'
+
 
 
 :javascript
   $(document).ready(function () {
-    this.removeChoice = function(element) {
-      return element.parent().remove();
-    };
+    // this.removeChoice = function(element) {
+    //   return element.parent().remove();
+    // };
 
     $("#addNewQuestion").on("click", function() {
       $('#questions_choices').append($('#new_questions_form').html());

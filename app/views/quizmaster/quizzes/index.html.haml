@@ -4,6 +4,8 @@
   - current_user.quizzes.each do |quiz|
 
     = link_to quiz.name, quizmaster_quiz_path(quiz)
+    |
+    = link_to 'Edit', edit_quizmaster_quiz_path(quiz)
     %br/
 
   %hr/

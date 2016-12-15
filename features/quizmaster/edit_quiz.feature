@@ -7,5 +7,11 @@ Feature: As a Quizmaster
     And I am logged in as "viktoria@quizmaster.com"
     And "viktoria@quizmaster.com" has a quiz called "Team Craft Academy"
 
+    @javascript @action_cable
   Scenario: I edit my quiz
-    Given I am on the edit quiz page for "Team Craft Academy"
+    Given I am on the quizmaster "Dashboard" page
+    When I click the "Edit" link
+    Then I am on the edit quiz page for "Team Craft Academy"
+    When I fill in the first "Question" with "a different question"
+    And I click the "Update" button
+    Then I should see "Quiz successfully updated"
