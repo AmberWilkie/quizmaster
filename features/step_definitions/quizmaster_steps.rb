@@ -63,13 +63,26 @@ end
 
 Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
   case page
-  when 'Sign up'
-    visit new_user_registration_path
-  when 'Log in'
-    visit new_user_session_path
-  when 'Dashboard'
-    visit quizmaster_dashboard_path
-  when 'Create quiz'
-    visit new_quizmaster_quiz_path
+    when 'Sign up'
+      visit new_user_registration_path
+    when 'Log in'
+      visit new_user_session_path
+    when 'Dashboard'
+      visit quizmaster_dashboard_path
+    when 'Create quiz'
+      visit new_quizmaster_quiz_path
   end
+end
+
+Given(/^I am on the edit quiz page for "([^"]*)"$/) do |quiz_name|
+  quiz = Quiz.find_by(name: quiz_name)
+  visit edit_quizmaster_quiz_path(quiz)
+end
+
+
+And(/^"([^"]*)" has a quiz called "([^"]*)"$/) do |email, quiz_name|
+  qm = User.find_by(email: email)
+  quiz = qm.quizzes.create(name: quiz_name)
+  quiz.questions.create(body: 'test question', answer: 'test answer')
+  quiz.questions.create(body: 'test question 2', answer: 'test answer 2')
 end

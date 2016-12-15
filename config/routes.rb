@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   namespace :quizmaster do
-    resources :quiz, controller: :quizzes, only: [:show, :new, :create]
+    resources :quiz, controller: :quizzes, only: [:show, :new, :create, :edit]
     post '/quiz/:id', controller: :quizzes, action: :start_quiz
     get '/quiz/reset/:id', controller: :quizzes, action: :reset_quiz, as: :reset_quiz
     post '/send_question', controller: :quizzes, action: :send_question

@@ -41,6 +41,14 @@ class Quizmaster::QuizzesController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    redirect_to quizmaster_dashboard_path
+  end
+
   def start_quiz
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
     BroadcastMessageJob.perform_now(content)
