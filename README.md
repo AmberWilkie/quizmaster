@@ -7,37 +7,26 @@
 
 ## Introduction
 
-By Craft Academy - Coding as a craft.
+Pub Quiz made digital. Users can author quizzes, then have their friends log in to send and receive answers in real time - no refreshing the page. All thanks to the magic of Rails' Action Cable.
 
-Pub Quiz made Digital.
+You find the live app at [eQuizmaster.com](http://www.equizmaster.com/). Please feel free to use it for your next quiz night!
 
-It is a work in progress, so at the moment there is no function for authoring quizzes.
-
-You find the live app at [eQuizmaster.com](http://www.equizmaster.com/) 
-
-But to be able to play the game you need to have a quiz code and a quiz needs to be live, so that is not doable yet.
+Built for [Craft Academy](http://www.craftacademy.se)'s programming bootcamp as a final project.
 
 ## Client
 
 You can find the mobile client on [Github](https://github.com/AmberWilkie/quizmaster-client) or in the Android store (search for eQuizmaster).
 
 
-
 ## Technology
 - Cucumber with Capybara and Poltergeist for acceptance testing
 - Rspec with Shoulda-matchers for unit testing
-- ActionCable for pushing out Greeting and Questions
+- ActionCable for pushing out Questions and Answers
 - Rails 5 as framework
+- Devise
+- Bootstrap
 
-
-
-## Motivation
-
-This project exists as a Final project for the Bootcamp students at Craft academy. Also as a fun thing for our graduation party:
-https://www.eventbrite.com/e/craft-academy-halloween-party-2016-registration-28562985659
-
-
-## Installation (This part is WIP)
+## Installation
 
 Fork or clone the project, then in your project folder run:
 
@@ -46,11 +35,9 @@ bundle install
 rails db:create
 rails db:migrate
 ```
-
-At the moment you need rails `db:seed` as there is no authoring function of quizzes.
+`rails db:seed` if you'd like to have some quizzes and teams pre-populated.
 
 You also need to have a `redis server` running and a localhost server with two windows open, one on root path and one at `/quizmaster/quiz/:id`
-
 
 ## Tests
 
@@ -70,15 +57,14 @@ Scenario: I send the first question
 
 ## Contributors
 
-
 [Pivotal tracker](https://www.pivotaltracker.com/n/projects/1901449)
 
 
-- @thesuss
-- @amberwilkie
-- @blokkinen
-- @tochman
-- @diraulo
+- @thesuss (student)
+- @amberwilkie (student)
+- @blokkinen (student)
+- @tochman (coach)
+- @diraulo (coach)
 
 
 ## License
